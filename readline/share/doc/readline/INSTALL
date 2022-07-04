@@ -70,7 +70,7 @@ this:
 
 Or on systems that have the `env' program, you can do it like this:
 
-     env CPPFLAGS=-I/goinfre/aboudoun/.brew/include LDFLAGS=-s ./configure
+     env CPPFLAGS=-I/usr/local/include LDFLAGS=-s ./configure
 
 Compiling For Multiple Architectures
 ====================================
@@ -93,10 +93,10 @@ Installation Names
 ==================
 
 By default, `make install' will install the readline libraries in
-`/goinfre/aboudoun/.brew/lib', the include files in
-`/goinfre/aboudoun/.brew/include/readline', the man pages in `/goinfre/aboudoun/.brew/man',
-and the info files in `/goinfre/aboudoun/.brew/info'.  You can specify an
-installation prefix other than `/goinfre/aboudoun/.brew' by giving `configure'
+`/usr/local/lib', the include files in
+`/usr/local/include/readline', the man pages in `/usr/local/man',
+and the info files in `/usr/local/info'.  You can specify an
+installation prefix other than `/usr/local' by giving `configure'
 the option `--prefix=PATH' or by supplying a value for the
 DESTDIR variable when running `make install'. 
 

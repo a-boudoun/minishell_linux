@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/12 17:55:45 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/06/30 19:33:30 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:57:00 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	expand(t_token_list *list, char **var)
 	temp = list->head;
 	while (temp)
 	{
-		if (temp->type == DOLLAR && temp->next)
+		if (temp->type == DOLLAR && temp->next && temp->prev->type != HEREDOC)
 		{
 			if (temp->next->type == AFDOLLAR)
 			{

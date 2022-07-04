@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:45:43 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/06/20 20:00:05 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:05:52 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,11 @@ void	tokenizer(t_token_list *tokens, char *line)
 			line = is_dquout(tokens, line + 1);
 		else
 		{
-			line = is_word(tokens, line, " \n\t\'\"<|>$;\\");
-			if (*line == ';' || *line == '\\')
+			line = is_word(tokens, line, " \n\t\'\"<|>$;");
+			if (*line == ';' && *(line + 1) == ';')
 			{
-				if (*line == ';')
-					add_back(tokens, ft_strjoin("minishell: syntax error near unexpected token", " ';'"), ERROR);
-				else
-					add_back(tokens, ft_strjoin("minishell: syntax error near unexpected token", " '\\'"), ERROR);
-				line++;
+				add_back(tokens, ft_strjoin("minishell: syntax error near unexpected token", " ';'"), ERROR);
+				line = line + 2;
 			}
 		}
 	}

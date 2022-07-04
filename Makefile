@@ -1,6 +1,6 @@
-RED=$'\x1b[31m
-GREEN=$'\x1b[32m
-PURPLE=$'\x1b[35m
+RED=$'\033[1;31m
+GREEN=$'\033[1;32m
+PURPLE=$'\033[1;35m
 
 NAME = minishell
 
@@ -35,23 +35,23 @@ OBJ = $(FILES:%.c=%.o)
 all : $(NAME)
 
 $(NAME): $(OBJ) $(LIBFT_LIB) $(HEADER)
-	@$(CC) $(FLAGS) $(LIBFT_LIB) $(OBJ) -o $(NAME) -L ./readline/lib -lreadline
+	@$(CC) $(OBJ) $(FLAGS) $(LIBFT_LIB) -o $(NAME) -L ./readline/lib -lreadline
 
 %.o : %.c $(HEADER)
 	@$(CC) -I ./readline/include -I./include $(FLAGS) -o $@ -c $<
 	@echo "$(GREEN)" "compiling $<"
 
 $(LIBFT_LIB):
-	@$(MAKE) -C $(LIBFT_DIR)
+	@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
 	
 clean:
 	@rm -rf $(OBJ)
-	@$(MAKE) clean -C $(LIBFT_DIR)
+	@$(MAKE) clean --no-print-directory -C $(LIBFT_DIR)
 	@echo "$(RED)" "cleaning ..."
 
 fclean : clean
 	@rm -rf $(NAME) *.gch
-	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@$(MAKE) --no-print-directory fclean -C $(LIBFT_DIR)
 	@echo "$(RED)" "full cleaning..."
 
 re : fclean all

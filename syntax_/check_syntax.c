@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:25:30 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/06/30 19:52:48 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/07/04 17:14:54 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,11 @@ int	check_pipe(t_token_elem *node)
 			return (1);
 		}
 		if (node->next->type == WHSPACE)
-		{
-			if (!node->next->next || node->next->next->type != AFDOLLAR || node->next->next->type != WORD)
-			{ 
-				printf("error\n");
-				/*
-				error_handler("minishell: syntax error \
-					near unexpected token `|'");*/
-				return (1);
-			}
+			node = node->next;
+		if (!node->next || (node->next->type != DOLLAR && node->next->type != WORD))
+		{ 
+			error_handler("minishell: syntax error near unexpected token `|'");
+			return (1);
 		}
 	}
 	return (0);
@@ -52,10 +48,10 @@ int	check_red(t_token_elem *node, t_token_list *list)
 		|| node->type == APPEND || node->type == HEREDOC)
 	{
 		if (node->next && node->next->type == WHSPACE)
-			del_node(node->next, list);
-		if (!node->next || node->next->type != WORD)
+			del_node(node->next, list );
+		if (!node->next || (node->next->type != WORD && node->next->type != DOLLAR))
 		{
-			error_handler("minishell: error no such file");
+			error_handler("syntax error near unexpected token `newline'");
 			return (1);
 		}
 	}

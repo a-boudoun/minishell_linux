@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/04 13:35:32 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/07/04 17:08:24 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/07/05 20:56:32 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,7 @@ int	main(int ac, char **av, char **env)
 		printf("\n");
 		//print_list(tokens);
 		free_tokens(tokens);
-		//free(line);
+		free(line);
 
 		//if (!ft_strncmp(line, "exit", 4))
 		//{

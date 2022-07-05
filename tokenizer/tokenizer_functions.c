@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 17:45:21 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/07/05 20:14:58 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/07/05 22:37:05 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,10 @@ char	*is_sign(t_token_list *tokens, char *line)
 			return (line);	
 		}
 		if (*line != '"' && *line != '\'')
+		{
 			add_back(tokens, "$", DOLLAR);
-		line = after_dollar(tokens, line);
+			line = after_dollar(tokens, line);	
+		}
 	}
 	return (line);
 }

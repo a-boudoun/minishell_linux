@@ -6,7 +6,7 @@
 /*   By: aboudoun <aboudoun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/11 23:25:30 by aboudoun          #+#    #+#             */
-/*   Updated: 2022/07/05 20:15:24 by aboudoun         ###   ########.fr       */
+/*   Updated: 2022/07/05 22:47:09 by aboudoun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_pipe(t_token_elem *node)
 		}
 		if (node->next->type == WHSPACE)
 			node = node->next;
-		if (!node->next || (node->next->type != DOLLAR && node->next->type != WORD))
+		if (!node->next || (node->next->type != DOLLAR && node->next->type != WORD && node->next->type != ERROR))
 		{ 
 			error_handler("minishell: syntax error near unexpected token `|'");
 			return (1);
